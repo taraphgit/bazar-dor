@@ -1,4 +1,7 @@
-﻿import Link from "next/link";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const categories = [
   { name: "চাল", slug: "chal" },
@@ -12,11 +15,17 @@ const categories = [
 ];
 
 export default function Navbar() {
-  const banglaDate = new Intl.DateTimeFormat("bn-BD", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date());
+  const [banglaDate, setBanglaDate] = useState("");
+
+  useEffect(() => {
+    const date = new Intl.DateTimeFormat("bn-BD", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(new Date());
+
+    setBanglaDate(date);
+  }, []);
 
   return (
     <>
@@ -48,7 +57,7 @@ export default function Navbar() {
 
       <div className="ticker">
         <div className="container ticker-track">
-          <span>📅 {banglaDate}</span>
+          <span>📅 {banglaDate || "আজকের তারিখ"}</span>
           <span>🇧🇩 বাংলাদেশের নিত্যপণ্যের বাজার দর</span>
           <span>📊 নিয়মিত মূল্য আপডেট</span>
         </div>

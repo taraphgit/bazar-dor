@@ -1,9 +1,11 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import { getProducts } from "@/lib/api";
+import { getProducts, type Product } from "@/lib/api";
+
+export const instant = false;
 
 export default async function Home() {
-  let products = [];
+  let products: Product[] = [];
 
   try {
     products = await getProducts();

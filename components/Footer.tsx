@@ -1,21 +1,25 @@
-﻿import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
 
 export default function Footer() {
+  const [year, setYear] = useState("");
+
+  useEffect(() => {
+    setYear(String(new Date().getFullYear()));
+  }, []);
+
   return (
     <footer className="footer">
-      <div className="container footer-inner">
-        <div>
-          <Link href="/" className="logo" style={{ color: "white" }}>
-            🛒 বাজার দর
-          </Link>
-          <p>
-            বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের বাজার মূল্য জানুন
-            <br />
-            সচেতন কেনাকাটায় থাকুন এক ধাপ এগিয়ে।
-          </p>
+      <div className="container">
+        <div className="footer-content">
+          <div>
+            <h3>🛒 বাজার দর</h3>
+            <p>বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের বাজারদর জানুন এক জায়গায়।</p>
+          </div>
         </div>
 
-        <p>© {new Date().getFullYear()} বাজার দর। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>© {year || "২০২৬"} বাজার দর। সর্বস্বত্ব সংরক্ষিত।</p>
       </div>
     </footer>
   );
