@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import AuthNav from "@/components/AuthNav";
+import PriceTicker from "@/components/PriceTicker";
 
 const categories = [
   { name: "চাল", slug: "chal" },
@@ -19,9 +20,13 @@ export default function Navbar() {
   const [banglaDate, setBanglaDate] = useState("");
 
   useEffect(() => {
-    setBanglaDate(new Intl.DateTimeFormat("bn-BD", {
-      day: "numeric", month: "long", year: "numeric"
-    }).format(new Date()));
+    setBanglaDate(
+      new Intl.DateTimeFormat("bn-BD", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(new Date())
+    );
   }, []);
 
   return (
@@ -32,6 +37,7 @@ export default function Navbar() {
             🛒 বাজার দর
             <small>আজকের বাজার, আপনার হাতেই</small>
           </Link>
+
           <nav className="nav-links">
             {categories.map((category) => (
               <Link key={category.slug} href={`/category/${category.slug}`}>
@@ -39,16 +45,21 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
-          <div className="nav-actions"><AuthNav /></div>
+
+          <div className="nav-actions">
+            <AuthNav />
+          </div>
         </div>
       </header>
-      <div className="ticker">
-        <div className="container ticker-track">
-          <span>📅 {banglaDate || "আজকের তারিখ"}</span>
-          <span>🇧🇩 বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের বাজার দর</span>
-          <span>📊 নিয়মিত মূল্য আপডেট</span>
+
+      <div className="date-strip">
+        <div className="container">
+          📅 {banglaDate || "আজকের তারিখ"}
+          <span> 🇧🇩 বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের বাজার দর</span>
         </div>
       </div>
+
+      <PriceTicker />
     </>
   );
 }

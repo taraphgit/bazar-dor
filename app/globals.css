@@ -797,3 +797,99 @@ button {
     padding: 25px 20px;
   }
 }
+/* Price ticker */
+.price-ticker {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #ecfdf5;
+  border-bottom: 1px solid #d1fae5;
+  min-height: 42px;
+}
+.ticker-label {
+  background: #047857;
+  color: white;
+  padding: 11px 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 1;
+}
+.ticker-track {
+  display: flex;
+  gap: 42px;
+  white-space: nowrap;
+  padding-left: 25px;
+  animation: ticker-scroll 55s linear infinite;
+}
+.ticker-track span { font-size: 14px; color: #334155; }
+.ticker-up { color: #dc2626 !important; }
+.ticker-down { color: #059669 !important; }
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.loading-page { padding-top: 35px; padding-bottom: 50px; }
+.loading-title { height: 42px; width: 45%; margin-bottom: 25px; }
+.loading-banner { height: 220px; margin-bottom: 30px; border-radius: 18px; }
+.loading-card { height: 230px; border-radius: 14px; }
+.profile-page { padding: 55px 16px; }
+.profile-card { max-width: 550px; margin: auto; padding: 30px; border-radius: 18px; background: white; box-shadow: 0 8px 30px #0000000d; }
+.profile-info { margin: 20px 0; line-height: 2; }
+.profile-avatar { font-size: 48px; }
+.profile-edit-button, .profile-home-link { display: inline-block; margin: 8px; padding: 10px 18px; border-radius: 8px; background: #047857; color: white; }
+@media (max-width: 600px) {
+  .ticker-label { padding: 10px 8px; font-size: 12px; }
+  .ticker-track { gap: 24px; }
+  .profile-card { padding: 20px; }
+}
+/* Price ticker and date strip */
+.date-strip {
+  background: #f0fdf4;
+  color: #166534;
+  padding: 9px 0;
+  font-size: 13px;
+}
+.date-strip span { margin-left: 16px; }
+
+.price-ticker {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: 42px;
+  background: #ecfdf5;
+  border-bottom: 1px solid #d1fae5;
+}
+.ticker-label {
+  background: #047857;
+  color: white;
+  padding: 11px 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 1;
+}
+.ticker-window {
+  flex: 1;
+  overflow: hidden;
+}
+.price-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 42px;
+  white-space: nowrap;
+  padding-left: 25px;
+  animation: bazar-ticker-scroll 65s linear infinite;
+}
+.price-ticker-track span { font-size: 14px; color: #334155; }
+.ticker-up { color: #dc2626; }
+.ticker-down { color: #059669; }
+
+@keyframes bazar-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 600px) {
+  .date-strip span { display: block; margin: 4px 0 0; }
+  .ticker-label { padding: 10px 8px; font-size: 12px; }
+  .price-ticker-track { gap: 24px; }
+}
